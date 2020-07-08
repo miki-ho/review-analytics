@@ -24,21 +24,50 @@ for d in data:
 	if 'good' in d:
 		good.append(d)
 print('一共有', len(good), '筆留言提到good')		
-print(good[0])
 
-good = [d for d in data if 'good' in d]
-print(good[0])
+# print(good[0])
 
-good = [1 for d in data if 'good' in d]
-print(good[0])
+# good = [d for d in data if 'good' in d]
+# print(good[0])
 
-bad = ['bad' in d for d in data]
-print(bad[0])
+# good = [1 for d in data if 'good' in d]
+# print(good[0])
 
-bad = []
+# bad = ['bad' in d for d in data]
+# print(bad[0])
+
+# bad = []
+# for d in data:
+# 	bad.append('bad' in d)
+# print(bad[1])
+
+
+wc = {} #word_count
 for d in data:
-	bad.append('bad' in d)
-print(bad[1])
+	words =d.split()
+	for word in words:
+		if word in wc:
+			wc[word] += 1
+		else:
+			wc[word] = 1 #add new key in wc
+
+for word in wc:
+	if wc[word] > 1000000:
+		print(word, wc[word])
+
+print(len(wc))
+print(wc['Allen'])
+
+while True:
+	word = input('what word you like to search:')
+	if word == 'q':
+		break
+	if word in wc:
+		print(word, 'display', wc[word])
+	else:
+		print('no display')
+
+print('thanks use this')
 
 
 
